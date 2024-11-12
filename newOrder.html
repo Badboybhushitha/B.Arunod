@@ -1,41 +1,97 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Order - BA ONLINE</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Order Now</title>
+    <style>
+        /* Set black background and white text for readability */
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h2 {
+            color: #f1c40f; /* Accent color for the heading */
+        }
+        form {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+        }
+        label, input {
+            color: white;
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #555;
+            background-color: #444;
+            color: white;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #f1c40f;
+            color: black;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e1b70e;
+        }
+    </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>New Order</h2>
-        <form id="newOrderForm">
-            <label for="customerName">Customer Name:</label>
-            <input type="text" id="customerName" required><br>
+    <h2>Order Now</h2>
+    <form id="orderForm">
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" required>
 
-            <label for="customerAddress">Customer Address:</label>
-            <input type="text" id="customerAddress" required><br>
+        <label for="customerAddress">Customer Address:</label>
+        <input type="text" id="customerAddress" required>
 
-            <label for="customerEmail">Customer Email:</label>
-            <input type="email" id="customerEmail" required><br>
+        <label for="customerEmail">Customer Email:</label>
+        <input type="email" id="customerEmail" required>
 
-            <label for="customerPhone">Customer Phone Number:</label>
-            <input type="text" id="customerPhone" required><br>
+        <label for="customerPhone1">Customer Phone Number:</label>
+        <input type="text" id="customerPhone1" required>
 
-            <label for="productCode">Product Code:</label>
-            <input type="text" id="productCode" required><br>
+        <label for="customerPhone2">Customer Phone Number 2:</label>
+        <input type="text" id="customerPhone2">
 
-            <label for="stock">Stock:</label>
-            <input type="number" id="stock" required><br>
+        <label for="customerDistrict">District:</label>
+        <input type="text" id="customerDistrict" required>
 
-            <label for="userPrice">User Price:</label>
-            <input type="number" id="userPrice" required><br>
+        <label for="customerCity">City:</label>
+        <input type="text" id="customerCity" required>
 
-            <button type="submit">Place Order</button>
-        </form>
-    </div>
+        <label for="productCode">Product Code:</label>
+        <input type="text" id="productCode" required>
 
-    <script src="newOrder.js"></script>
+        <label for="stock">Stock:</label>
+        <input type="text" id="stock" required>
+
+        <label for="userPrice">User Price:</label>
+        <input type="text" id="userPrice" required>
+
+        <button type="button" onclick="sendWhatsAppMessage()">Submit</button>
+    </form>
+
+    <script src="ordernow.js"></script>
 </body>
 </html>
-
