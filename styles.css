@@ -1,70 +1,129 @@
-body {
+/* Apply global styles */
+body, html {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    color: white; /* Make text color white by default for visibility */
+    background-color: black; /* Fallback background color */
 }
 
-/* Home Page Background */
-.home-container {
-    position: relative;
-    height: 100vh;
+/* Set the background image for all pages */
+body {
     background-image: url('https://i.ibb.co/z6hW2JV/Black-and-Grey-Modern-Business-Webinar-Flyer.jpg');
     background-size: cover;
     background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
+    background-repeat: no-repeat;
 }
 
-/* Overlay to make text stand out */
+/* Dark overlay to make text readable */
 .overlay {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Darken the background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    z-index: -1;
+}
+
+/* Centered container for content */
+.container {
+    position: relative;
+    padding: 20px;
     text-align: center;
+    max-width: 800px;
+    margin: auto;
 }
 
-header {
-    margin-bottom: 30px;
-}
-
-header .logo {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
+/* Headings and text styling */
+h1, h2, h3, p {
+    color: white;
+    margin: 10px 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Add shadow for better readability */
 }
 
 h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 2.5em;
 }
 
-p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+h2 {
+    font-size: 2em;
 }
 
-.home-btn {
-    padding: 15px 30px;
-    margin: 10px;
-    font-size: 1em;
-    background-color: #ff7f00;
+p, label {
+    font-size: 1.1em;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent for dark background */
     color: white;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Lighten placeholder text */
+}
+
+/* Buttons */
+button {
+    padding: 12px 24px;
+    margin: 10px 0;
     border: none;
     border-radius: 5px;
+    background-color: #ff7f00;
+    color: white;
+    font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.home-btn:hover {
+button:hover {
     background-color: #d96c00;
-    }
+}
+
+/* Profile Picture 1x1 */
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-bottom: 20px;
+}
+
+/* Forms */
+form {
+    background-color: rgba(0, 0, 0, 0.8); /* Darker form background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Layout adjustments for better readability */
+.section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5); /* Slightly dark background for sections */
+    border-radius: 8px;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em;
+}
