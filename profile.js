@@ -1,36 +1,29 @@
-// Function to handle profile picture upload
-function uploadProfilePicture() {
-    const fileInput = document.getElementById('profilePicUpload');
-    const profilePic = document.getElementById('profilePic');
-    const file = fileInput.files[0];
+// Load user data from localStorage
+window.onload = function() {
+    const username = localStorage.getItem('userUsername');
+    const name = localStorage.getItem('userName');
+    const email = localStorage.getItem('userEmail');
+    const address = localStorage.getItem('userAddress');
+    const phone = localStorage.getItem('userPhone');
+    const profilePic = localStorage.getItem('profilePic');  // Assuming the profile pic URL is stored
 
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            profilePic.src = e.target.result; // Display the selected image
-        }
-        reader.readAsDataURL(file); // Read the file as a data URL
+    // Set the profile information to display on the page
+    document.getElementById('profileName').textContent = name;
+    document.getElementById('profileEmail').textContent = email;
+    document.getElementById('profileAddress').textContent = address;
+    document.getElementById('profilePhone').textContent = phone;
+
+    // Set the profile picture if exists
+    if (profilePic) {
+        document.getElementById('profilePic').src = profilePic;
+    } else {
+        document.getElementById('profilePic').alt = 'No profile picture set';
     }
-}
+};
 
-// Admin role check function
-function isAdmin() {
-    // Simple check: If username is admin, allow editing profits
-    const username = 'admin@example.com'; // Replace with session/user data
-    return username === 'admin@example.com';
-}
-
-// Allow only admin to edit profits and order count
-if (!isAdmin()) {
-    const profits = document.querySelectorAll('.profit-details .editable');
-    const orderCount = document.getElementById('orderCount');
-    
-    // Disable editing for non-admin users
-    profits.forEach(function(profit) {
-        profit.setAttribute('disabled', 'true');
-    });
-
-    orderCount.setAttribute('disabled', 'true');  // Disable order count for non-admin users
-}
-
-// (Optional) You can extend this with more complex checks based on your system's user roles
+// Optional: Add functionality to edit the profile (e.g., updating profile picture or other details)
+document.getElementById('editProfileBtn').addEventListener('click', function() {
+    // You can add functionality here to allow users to edit their profile.
+    // For now, we'll just alert them.
+    alert('Edit profile functionality goes here.');
+});
