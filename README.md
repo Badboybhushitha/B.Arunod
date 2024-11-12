@@ -1,2 +1,0 @@
-# B.Arunod
-Drop Shipping 
