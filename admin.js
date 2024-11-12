@@ -1,79 +1,61 @@
-// Sample Admin Credentials
+// Admin credentials
 const adminUsername = "B.Arunod";
 const adminPassword = "bhushitha2007#";
 
-// Check Admin Login (Simple simulation)
-function loginAsAdmin(username, password) {
-    return username === adminUsername && password === adminPassword;
-}
+// Login function for Admin access
+function login() {
+    const username = document.getElementById("adminUsername").value;
+    const password = document.getElementById("adminPassword").value;
 
-// Check if Admin is logged in
-function checkAdminAccess() {
-    const isAdminLoggedIn = localStorage.getItem("isAdminLoggedIn");
-    if (!isAdminLoggedIn) {
-        alert("Unauthorized access. Please log in as Admin.");
-        window.location.href = "login.html"; // Redirect to a login page
+    if (username === adminUsername && password === adminPassword) {
+        document.getElementById("adminLogin").style.display = "none";
+        document.getElementById("adminContent").style.display = "block";
+        loadUserList();
+    } else {
+        alert("ඔබ මේහි අයිතිකරුවා නොවේ.");
     }
 }
 
-// Run access check on page load
-checkAdminAccess();
-
-// Function to add a new user
-function addUser(username, email, password, phone) {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    users.push({ username, email, password, phone, earnings: 0 });
-    localStorage.setItem("users", JSON.stringify(users));
-    alert("User added successfully.");
-}
-
-// Function to populate user dropdown for editing earnings
-function populateUserDropdown() {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    const userSelect = document.getElementById("userSelect");
-    userSelect.innerHTML = "";
+// Load user list on the Admin page
+function loadUserList() {
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userList = document.getElementById("userList");
+    userList.innerHTML = ""; // Clear previous user list
 
     users.forEach((user, index) => {
-        const option = document.createElement("option");
-        option.value = index;
-        option.textContent = user.username;
-        userSelect.appendChild(option);
+        const userDiv = document.createElement("div");
+        userDiv.classList.add("user-entry");
+        userDiv.innerHTML = `
+            <p><strong>Username:</strong> ${user.username}</p>
+            <p><strong>Email:</strong> ${user.email}</p>
+            <p><strong>Phone:</strong> ${user.phone}</p>
+            <button onclick="removeUser(${index})">Remove User</button>
+        `;
+        userList.appendChild(userDiv);
     });
 }
 
-// Update user earnings
-function updateUserEarnings(userIndex, earnings) {
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-    if (users[userIndex]) {
-        users[userIndex].earnings = earnings;
-        localStorage.setItem("users", JSON.stringify(users));
-        alert("User earnings updated.");
-    } else {
-        alert("User not found.");
-    }
-}
-
-// Handle form submissions
-document.getElementById("addUserForm").addEventListener("submit", function (event) {
+// Function to add a new user
+document.getElementById("addUserForm").addEventListener("submit", function(event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const phone = document.getElementById("phone").value;
 
-    addUser(username, email, password, phone);
-    populateUserDropdown(); // Refresh dropdown
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users.push({ username, email, password, phone });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    loadUserList();
+    alert("User added successfully.");
     this.reset();
 });
 
-document.getElementById("editEarningsForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-    const userIndex = document.getElementById("userSelect").value;
-    const earnings = document.getElementById("earnings").value;
-
-    updateUserEarnings(userIndex, earnings);
-    this.reset();
-});
-
-// Initialize user dropdown on page load
-window.onload = populateUserDropdown;
+// Remove a user from the list
+function removeUser(index) {
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    users.splice(index, 1);
+    localStorage.setItem("users", JSON.stringify(users));
+    loadUserList();
+        }
