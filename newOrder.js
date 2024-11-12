@@ -1,32 +1,28 @@
-document.getElementById("newOrderForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
+function sendWhatsAppMessage() {
     const customerName = document.getElementById("customerName").value;
     const customerAddress = document.getElementById("customerAddress").value;
     const customerEmail = document.getElementById("customerEmail").value;
-    const customerPhone = document.getElementById("customerPhone").value;
+    const customerPhone1 = document.getElementById("customerPhone1").value;
+    const customerPhone2 = document.getElementById("customerPhone2").value;
+    const customerDistrict = document.getElementById("customerDistrict").value;
+    const customerCity = document.getElementById("customerCity").value;
     const productCode = document.getElementById("productCode").value;
     const stock = document.getElementById("stock").value;
     const userPrice = document.getElementById("userPrice").value;
 
-    // Delivery charge
-    const deliveryCharge = 400;
-    const profit = userPrice - stock;
-    const totalAmount = parseFloat(userPrice) + deliveryCharge;
+    const whatsappNumber = "94788054702";
+    const message = `Order Details:
+    \nCustomer Name: ${customerName}
+    \nCustomer Address: ${customerAddress}
+    \nCustomer Email: ${customerEmail}
+    \nCustomer Phone 1: ${customerPhone1}
+    \nCustomer Phone 2: ${customerPhone2}
+    \nDistrict: ${customerDistrict}
+    \nCity: ${customerCity}
+    \nProduct Code: ${productCode}
+    \nStock: ${stock}
+    \nUser Price: ${userPrice}`;
 
-    const receipt = `
-        <h2>Receipt</h2>
-        <p>Customer Name: ${customerName}</p>
-        <p>Product Code: ${productCode}</p>
-        <p>Stock: ${stock}</p>
-        <p>User Price: Rs. ${userPrice}</p>
-        <p>Delivery Charge: Rs. ${deliveryCharge}</p>
-        <p>Profit: Rs. ${profit}</p>
-        <p>Total Amount: Rs. ${totalAmount}</p>
-    `;
-
-    alert("Order placed successfully!");
-
-    // Optionally, send receipt data to WhatsApp or generate a downloadable receipt image here
-    document.body.innerHTML = receipt;  // Display receipt as HTML, could be enhanced to generate an image
-});
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappURL, "_blank");
+}
