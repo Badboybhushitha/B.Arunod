@@ -54,6 +54,15 @@
         button:hover {
             background-color: #e1b70e;
         }
+        #receipt {
+            display: none;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            margin-top: 20px;
+            width: 400px;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -89,9 +98,19 @@
         <label for="userPrice">User Price:</label>
         <input type="text" id="userPrice" required>
 
-        <button type="button" onclick="sendWhatsAppMessage()">Submit</button>
+        <button type="button" onclick="processOrder()">Submit</button>
     </form>
 
+    <div id="receipt">
+        <h3>Order Receipt</h3>
+        <p id="receiptDetails"></p>
+        <p><strong>Total (User Price + Delivery): Rs <span id="totalPrice"></span></strong></p>
+        <button onclick="downloadPDF()">Download as PDF</button>
+        <button onclick="downloadImage()">Download as Image</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
     <script src="ordernow.js"></script>
 </body>
-</html>
+            </html>
