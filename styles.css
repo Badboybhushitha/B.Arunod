@@ -1,269 +1,70 @@
-/* Global Styles */
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-body {
-    background-image: url('https://i.ibb.co/z6hW2JV/Black-and-Grey-Modern-Business-Webinar-Flyer.jpg'); /* Replace YOUR_IMAGE_URL with the actual image link */
+/* Home Page Background */
+.home-container {
+    position: relative;
+    height: 100vh;
+    background-image: url('https://i.ibb.co/z6hW2JV/Black-and-Grey-Modern-Business-Webinar-Flyer.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Keeps the background fixed while scrolling */
-    color: #fff; /* Text color */
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    backdrop-filter: brightness(0.5); /* Darkens background for readability */
+    color: white;
+    text-align: center;
 }
 
-/* Logo for Home Page */
-.home-logo {
-    width: 100px; /* Adjust size as needed */
+/* Overlay to make text stand out */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darken the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+header .logo {
+    width: 100px;
     height: 100px;
     margin-bottom: 20px;
-    border-radius: 50%; /* Makes the logo circular if the image is square */
 }
 
-/* Header */
-h2 {
-    margin-bottom: 20px;
-    color: #4CAF50; /* Green color for header */
-    text-align: center;
-}
-
-/* Form Styles */
-form {
-    background-color: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Label and Input Styling */
-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 4px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    background-color: #555;
-    color: #fff;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    outline: none;
-    background-color: #666;
-    border: 1px solid #4CAF50;
-}
-
-/* Button Styles */
-button {
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Centered Content and Alert Styling */
-.container {
-    max-width: 1200px;
-    padding: 20px;
-    margin: auto;
-    text-align: center;
-}
-
-.form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
-}
-
-.alert {
-    color: red;
-    margin-top: 10px;
-    font-size: 0.9em;
-    text-align: center;
-}
-/* Styling for Login Container */
-.login-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.login-container h2 {
-    text-align: center;
+h1 {
+    font-size: 3em;
     margin-bottom: 20px;
 }
 
-.login-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.login-container label {
-    margin-bottom: 5px;
-}
-
-.login-container input {
-    margin-bottom: 15px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.login-container button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.login-container button:hover {
-    background-color: #0056b3;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #333; /* Dark background */
-    color: white;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-.container {
-    width: 80%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-h2 {
-    text-align: center;
-}
-
-label {
+p {
     font-size: 1.2em;
-    margin-bottom: 10px;
-    display: block;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #444;
-    color: white;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #5C6BC0; /* Blue button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #3f51b5;
-}
-
-.profile-container {
-    width: 80%;
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.profile-info p {
-    font-size: 1.2em;
-    margin: 10px 0;
-}
-
-#profilePic {
-    border-radius: 50%;
-    margin: 20px 0;
-}
-
-#newProfilePic {
     margin-bottom: 20px;
 }
 
-#updateProfilePicBtn {
-    padding: 10px 20px;
-    background-color: #5C6BC0; /* Blue button */
+.home-btn {
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1em;
+    background-color: #ff7f00;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#updateProfilePicBtn:hover {
-    background-color: #3f51b5;
-}
-
-/* Specific styles for login and sign-up pages */
-input[type="password"], input[type="text"], input[type="email"], input[type="file"] {
-    background-color: #444;
-    color: white;
-    border: 1px solid #5C6BC0;
-}
-
-h2 {
-    color: #fff;
-}
-
-button {
-    background-color: #5C6BC0;
-}
-
-button:hover {
-    background-color: #3f51b5;
-                                }
+.home-btn:hover {
+    background-color: #d96c00;
+    }
