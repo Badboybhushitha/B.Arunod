@@ -1,18 +1,54 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - B.Arunod Dropshipping</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <div class="form-container">
-        <h2>Admin Panel</h2>
-        <button onclick="addNewUser()">+ Add New User</button>
-        <div id="userList"></div>
+    <div class="admin-container">
+        <h1>Admin Dashboard</h1>
+
+        <!-- Add New User Section -->
+        <section class="add-user-section">
+            <h2>Add New User</h2>
+            <form id="addUserForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" name="phone" required>
+
+                <button type="submit">Add User</button>
+            </form>
+        </section>
+
+        <!-- Manage Earnings Section -->
+        <section class="earnings-section">
+            <h2>Edit User Earnings</h2>
+            <form id="editEarningsForm">
+                <label for="userSelect">Select User:</label>
+                <select id="userSelect">
+                    <!-- Dynamically populate with user options -->
+                </select>
+
+                <label for="earnings">Weekly Earnings:</label>
+                <input type="number" id="earnings" name="earnings" required>
+
+                <button type="submit">Update Earnings</button>
+            </form>
+        </section>
     </div>
+
+    <footer>B.ARUNOD DROPSHIPPING - Admin Dashboard</footer>
 
     <script src="admin.js"></script>
 </body>
-</html>
+            </html>
