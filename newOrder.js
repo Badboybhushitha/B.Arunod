@@ -27,37 +27,17 @@ User Price: Rs ${userPrice}
 Delivery Charge: Rs ${deliveryCharge}
 Total Price: Rs ${totalPrice}`;
 
-    // Define WhatsApp number (without leading zero and country code included)
-    const whatsappNumber = "94788054702";
-    
+    // Define your WhatsApp number
+    const whatsappNumber = "94788054702"; // Replace this with your number in international format
+
     // Construct WhatsApp URL
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-    // Open WhatsApp URL in a new tab
+    // Open WhatsApp chat with the message
     window.open(whatsappURL, "_blank");
 
-    // Display receipt details for user confirmation
+    // Optionally, display a receipt for the user
     document.getElementById("receiptDetails").innerText = message;
     document.getElementById("totalPrice").innerText = totalPrice;
     document.getElementById("receipt").style.display = "block";
 }
-
-// Function to download receipt
-function downloadReceipt(format) {
-    const receiptElement = document.getElementById("receipt");
-
-    if (format === 'pdf') {
-        // Download as PDF using jsPDF library
-        const doc = new jsPDF();
-        doc.text(receiptElement.innerText, 10, 10);
-        doc.save("receipt.pdf");
-    } else if (format === 'image') {
-        // Download as image using html2canvas
-        html2canvas(receiptElement).then((canvas) => {
-            const link = document.createElement("a");
-            link.href = canvas.toDataURL("image/png");
-            link.download = "receipt.png";
-            link.click();
-        });
-    }
-        }
