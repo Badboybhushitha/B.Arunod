@@ -27,8 +27,11 @@ document.getElementById('signUpForm').addEventListener('submit', function(event)
         localStorage.setItem('userPhone', phone);
         localStorage.setItem('userPassword', password);
 
-        // After successful sign-up, redirect to the login page
-        window.location.href = 'login.html'; // Adjust URL as needed for login page
+        // Automatically log the user in by setting the user as logged in
+        localStorage.setItem('isLoggedIn', 'true');
+
+        // Redirect to the Profile page after successful sign-up
+        window.location.href = 'profile.html'; // Adjust URL as needed for the profile page
     } else {
         alert('Please fill in all fields');
     }
