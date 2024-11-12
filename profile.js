@@ -1,5 +1,15 @@
-// Load user data from localStorage
+// Automatically load the user profile data from localStorage
 window.onload = function() {
+    // Check if the user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    
+    // If the user is not logged in, redirect to the login page
+    if (isLoggedIn !== 'true') {
+        window.location.href = 'login.html'; // Redirect to login page
+        return;
+    }
+
+    // Get user data from localStorage
     const username = localStorage.getItem('userUsername');
     const name = localStorage.getItem('userName');
     const email = localStorage.getItem('userEmail');
