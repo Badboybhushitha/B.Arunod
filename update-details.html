@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/jbr7ngc/your-image.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="password"], input[type="file"], input[type="button"] {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Update Profile Details</h1>
+</header>
+
+<div class="container">
+    <form id="update-form">
+        <h2>Login to Update Your Details</h2>
+
+        <!-- Login form for authentication -->
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" name="login-email" placeholder="Enter your email" required><br>
+
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="login-password" placeholder="Enter your password" required><br>
+
+        <button type="button" onclick="authenticateUser()">Login</button>
+    </form>
+
+    <!-- Profile Update Form - Hidden until authentication -->
+    <div id="profile-update-section" style="display:none;">
+        <h2>Profile Information</h2>
+
+        <label for="user-name">User Name:</label>
+        <input type="text" id="user-name" name="user-name" value="User123" disabled><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="user@example.com" disabled><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" value="0788054702" required><br>
+
+        <label for="profile-picture">Profile Picture:</label>
+        <input type="file" id="profile-picture" name="profile-picture" accept="image/*"><br>
+
+        <h2>Update Your Details</h2>
+
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password" required><br>
+
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required><br>
+
+        <button type="button" onclick="updateDetails()">Update Profile</button>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 B.ARUNOD DROPSHIPPING</p>
+</footer>
+
+<script>
+    // Authenticate user before showing the update profile section
+    function authenticateUser() {
+        var email = document.getElementById('login-email').value;
+        var password = document.getElementById('login-password').value;
+
+        // Your login credentials
+        var correctEmail = 'barunodonline@gmail.com';
+        var correctPassword = 'bhushitha2007#';
+
+        if (email === correctEmail && password === correctPassword) {
+            // Show the profile update section
+            document.getElementById('profile-update-section').style.display = 'block';
+            document.getElementById('update-form').style.display = 'none'; // Hide login form
+        } else {
+            alert("Invalid login credentials. You are not authorized to update details.");
+        }
+    }
+
+    function updateDetails() {
+        var userName = document.getElementById('user-name').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+        var newPassword = document.getElementById('new-password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
+
+        // Password confirmation check
+        if (newPassword !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        // Update profile details in the system
+        alert("Profile Updated Successfully!");
+
+        // Send the updated details to your WhatsApp
+        var updateDetails = `Profile Update: \nUser Name: ${userName}\nEmail: ${email}\nPhone: ${phone}\nNew Password: ${newPassword}`;
+        
+        var whatsappUrl = `https://wa.me/94788054702?text=${encodeURIComponent(updateDetails)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Prevent form submission
+    document.getElementById('update-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+    });
+</script>
+
+</body>
+</html>

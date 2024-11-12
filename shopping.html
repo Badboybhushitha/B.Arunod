@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/jbr7ngc/your-image.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        header, footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer {
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Shopping</h1>
+</header>
+
+<div class="container">
+    <p>Browse our products and buy with Cash on Delivery!</p>
+    <button onclick="window.location.href='new-order.html'">Order Now</button>
+</div>
+
+<footer>
+    <p>&copy; 2024 B.ARUNOD DROPSHIPPING</p>
+</footer>
+
+</body>
+</html>

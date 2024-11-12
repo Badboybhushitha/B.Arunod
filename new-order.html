@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.ibb.co/jbr7ngc/your-image.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .container {
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], input[type="button"] {
+            padding: 10px;
+            width: 100%;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>New Order</h1>
+</header>
+
+<div class="container">
+    <form id="order-form">
+        <h2>Customer Information</h2>
+        <label for="customer-name">Customer Name:</label>
+        <input type="text" id="customer-name" name="customer-name" required><br>
+
+        <label for="customer-address">Customer Address:</label>
+        <input type="text" id="customer-address" name="customer-address" required><br>
+
+        <label for="customer-email">Customer Email:</label>
+        <input type="email" id="customer-email" name="customer-email" required><br>
+
+        <label for="district">District:</label>
+        <input type="text" id="district" name="district" required><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <h2>Product Details</h2>
+        <label for="product-code">Product Code:</label>
+        <input type="text" id="product-code" name="product-code" required><br>
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock" required><br>
+
+        <label for="dropshipping-price">Dropshipping Price:</label>
+        <input type="number" id="dropshipping-price" name="dropshipping-price" required><br>
+
+        <label for="you-price">You Price:</label>
+        <input type="number" id="you-price" name="you-price" required><br>
+
+        <label for="delivery-charge">Delivery Charge (Fixed Rs.400):</label>
+        <input type="number" id="delivery-charge" name="delivery-charge" value="400" disabled><br>
+
+        <h2>Profit Calculation</h2>
+        <label for="profit">Profit:</label>
+        <input type="number" id="profit" name="profit" readonly><br>
+
+        <label for="total-price">Total Price:</label>
+        <input type="number" id="total-price" name="total-price" readonly><br>
+
+        <button type="submit" onclick="calculateProfit()">Submit Order</button>
+    </form>
+</div>
+
+<footer>
+    <p>&copy; 2024 B.ARUNOD DROPSHIPPING</p>
+</footer>
+
+<script>
+    function calculateProfit() {
+        var youPrice = parseFloat(document.getElementById('you-price').value);
+        var dropshippingPrice = parseFloat(document.getElementById('dropshipping-price').value);
+        var deliveryCharge = parseFloat(document.getElementById('delivery-charge').value);
+
+        // Calculate profit and total price
+        var profit = youPrice - dropshippingPrice;
+        var totalPrice = youPrice + deliveryCharge;
+
+        // Set calculated values in the form fields
+        document.getElementById('profit').value = profit;
+        document.getElementById('total-price').value = totalPrice;
+
+        // Send data to your WhatsApp
+        var customerName = document.getElementById('customer-name').value;
+        var customerAddress = document.getElementById('customer-address').value;
+        var customerEmail = document.getElementById('customer-email').value;
+        var district = document.getElementById('district').value;
+        var city = document.getElementById('city').value;
+
+        var productCode = document.getElementById('product-code').value;
+        var stock = document.getElementById('stock').value;
+
+        var orderDetails = `Customer Name: ${customerName}\nAddress: ${customerAddress}\nEmail: ${customerEmail}\nDistrict: ${district}\nCity: ${city}\nProduct Code: ${productCode}\nStock: ${stock}\nDropshipping Price: ${dropshippingPrice}\nYou Price: ${youPrice}\nProfit: ${profit}\nTotal Price: ${totalPrice}\nDelivery Charge: ${deliveryCharge}`;
+        
+        var whatsappUrl = `https://wa.me/94788054702?text=${encodeURIComponent(orderDetails)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Prevent form submission
+    document.getElementById('order-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+    });
+</script>
+
+</body>
+</html>
