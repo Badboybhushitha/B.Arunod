@@ -1,19 +1,24 @@
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+// Login form submission handler
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
 
-    const username = document.getElementById("loginUsername").value;
-    const password = document.getElementById("loginPassword").value;
+    // Get values from login form
+    const loginUsername = document.getElementById('loginUsername').value;
+    const loginPassword = document.getElementById('loginPassword').value;
 
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(user => user.username === username && user.password === password);
+    // Get user data from localStorage
+    const storedUsername = localStorage.getItem('userUsername');
+    const storedPassword = localStorage.getItem('userPassword');
 
-    if (user) {
-        alert("Login successful!");
-        // Store the logged in user's username for later use
-        localStorage.setItem("loggedInUser", username);
-        window.location.href = "profile.html";
+    // Validate the login details
+    if (loginUsername === storedUsername && loginPassword === storedPassword) {
+        // If credentials are correct, log the user in and set login status
+        localStorage.setItem('isLoggedIn', 'true');
+
+        // Redirect to the Profile page
+        window.location.href = 'profile.html';
     } else {
-        alert("Invalid username or password!");
-        window.location.href = "signup.html";
+        // If login fails, show an error message
+        alert('Invalid Username or Password');
     }
 });
