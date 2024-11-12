@@ -31,7 +31,7 @@ document.getElementById('signUpForm').addEventListener('submit', function(event)
         localStorage.setItem('isLoggedIn', 'true');
 
         // Redirect to the Profile page after successful sign-up
-        window.location.href = 'profile.html'; // Adjust URL as needed for the profile page
+        window.location.href = 'profile.html'; // Redirect to profile page
     } else {
         alert('Please fill in all fields');
     }
